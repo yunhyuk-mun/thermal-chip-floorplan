@@ -1,7 +1,7 @@
 """Side-by-side animation: wirelength-only vs thermal-aware annealing on ami33.
 
 Re-runs w=0 and w=1 with the same seed (0) with snapshots, then renders
-results/stage1_animation/anim_compare.mp4 and results/stage1_animation/anim_compare.gif. All values are assumption-based simulation.
+results/stage1_animation/anim_compare.mp4 (make the GIF from it with ffmpeg: fps=12, width 960). All values are assumption-based simulation.
 """
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))  # noqa: E702
 import pickle
