@@ -1,0 +1,11 @@
+m = 516.4 1/m, diffusion length 1/m = 1.94 mm, m*dx = 0.161
+check                                         numeric        exact   rel.err  pass
+1 uniform: max dT [K]                        25.00000     25.00000  5.68e-15  PASS
+1 uniform: min dT [K]                        25.00000     25.00000  3.41e-15  PASS
+3 energy (case1) [W]                         50.00000     50.00000  4.55e-15  PASS
+2 strip: dT at hottest cell [K]              23.11497     23.11404  4.00e-05  PASS
+2 strip: dT at coolest cell [K]               1.88503      1.88596  4.90e-04  PASS
+2 strip: max profile error / peak            23.15038     23.11404  1.57e-03  PASS
+3 energy (case2) [W]                         25.00000     25.00000  4.69e-15  PASS
+solve time per power map (32x32, LU reused): 0.194 ms
+ALL PASS

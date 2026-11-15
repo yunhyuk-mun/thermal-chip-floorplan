@@ -1,0 +1,9 @@
+check                                       numeric        exact   rel.err
+1 uniform dT [K]                           11.11111     11.11111  1.06e-13  PASS
+1 uniform shift [um]                       26.22222     26.22222  1.06e-13  PASS
+1 uniform tilt [urad] (exact 0)             0.00000      0.00000  8.30e-13  PASS
+2 tilt = a*L*(Ta-Tb)/d [urad]              18.97712     18.97712  0.00e+00  PASS
+3 energy [W]                               10.00000     10.00000  1.08e-13  PASS
+4 bend tilt uniform [urad]                  1.17764      1.17764  1.05e-13  PASS
+ALL PASS
+case2 (motor 10 W near A): Ta=33.60 Tb=32.14 tilt=19.0 urad shift=18.10 um bend=0.785 urad Tmax=34.0

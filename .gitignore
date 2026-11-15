@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+logs/
+docs/private/
+results/stage1_animation/anim_snapshots.pkl
