@@ -1,6 +1,6 @@
 """Side-by-side animation: wirelength-only vs thermal-aware annealing on ami33.
 
-Re-runs the same seeds as fig1 (w=0 seed 2, w=1 seed 0) with snapshots, then renders
+Re-runs w=0 and w=1 with the same seed (0) with snapshots, then renders
 results/stage1_animation/anim_compare.mp4 and results/stage1_animation/anim_compare.gif. All values are assumption-based simulation.
 """
 import sys, pathlib; sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))  # noqa: E702
@@ -20,7 +20,7 @@ from chipthermal.floorplan import load_problem, normalizers, anneal
 from chipthermal.paths import ANIM as R
 CACHE = R / "anim_snapshots.pkl"
 ITERS, EVERY, PENALTY = 20000, 200, 50.0
-RUNS = [("배선만 고려", 0.0, 2), ("배선 + 온도 고려", 1.0, 0)]
+RUNS = [("배선만 고려", 0.0, 0), ("배선 + 온도 고려", 1.0, 0)]
 
 prob = load_problem()
 if CACHE.exists() and "--rerun" not in sys.argv:

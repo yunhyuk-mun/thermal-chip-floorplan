@@ -74,9 +74,17 @@ def pack(pos, neg, w, h):
     return x, y
 
 
-def hpwl(prob, x, y, w, h):
+def hpwl(prob, x, y, w, h, rot=None):
+    """Half-perimeter wirelength. Pin offsets are fractions of block size from the centre.
+
+    A rotated block is turned 90 degrees counter-clockwise, so its pin offsets turn with it:
+    (dx, dy) -> (-dy, dx), still as fractions of the (swapped) width and height.
+    """
     total = 0.0
     for idx, dx, dy in prob.nets:
+        if rot is not None:
+            r = rot[idx]
+            dx, dy = np.where(r, -dy, dx), np.where(r, dx, dy)
         px = x[idx] + w[idx] * (0.5 + dx)
         py = y[idx] + h[idx] * (0.5 + dy)
         total += (px.max() - px.min()) + (py.max() - py.min())
@@ -107,7 +115,7 @@ def evaluate(prob, pos, neg, rot):
     x, y = pack(pos, neg, w, h)
     W, H = (x + w).max(), (y + h).max()
     overflow = (max(0.0, W - prob.outline) + max(0.0, H - prob.outline)) / prob.outline
-    wl = hpwl(prob, x, y, w, h)
+    wl = hpwl(prob, x, y, w, h, rot)
     temp = prob.solver.solve(power_map(prob, x, y, w, h))
     return dict(x=x, y=y, w=w, h=h, W=W, H=H, overflow=overflow, hpwl=wl,
                 tmax=float(temp.max()), temp=temp)
